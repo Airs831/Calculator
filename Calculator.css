@@ -31,9 +31,13 @@ body {
   border-radius: 20px;
   margin-bottom: 5%;
   background-color: white;
-  font-size: 50px;
+  font-size: 60px;
   text-align: right;
   box-shadow: 2px 1px black;
+  line-height: 130%;
+}
+#screen:empty:not(:focus):before{
+    content:attr(data-text)
 }
 #buttons {
   display: flex;
