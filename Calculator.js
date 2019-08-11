@@ -1,14 +1,27 @@
-let answer;
+let answer = 0;
+let stored = [];
 let results = document.querySelector('#screen');
 console.log(results.textContent)
 let buttons = document.getElementsByClassName('button')
-for (i=0; i <buttons.length; i++) {
+for (let i=0; i <buttons.length; i++) {
   let newDiv = buttons[i];
-  newDiv.onclick = function(e){
-    if (newDiv.textContent < 10 || newDiv.textContent == "."){
-    results.textContent += newDiv.textContent;
-  }
-    console.log(newDiv.id);
+  newDiv.onclick = function(e){ //INPUT NUMBERS AND DECIMAL
+      if (newDiv.textContent < 10 || newDiv.textContent == "."){
+      results.textContent += newDiv.textContent;
+    } else if (newDiv.id == "ac") { //CLEAR SCREEN
+      results.textContent = "";
+    } else if (newDiv.id == "plus") { //ADD NUMBERS
+      stored.push(results.textContent);
+      results.textContent = '';
+    } else if (newDiv.id == "equal") { //GETS ANSWER
+      stored.push(results.textContent);
+      for (let i=0; i<stored.length; i++) {
+        answer += parseInt(stored[i]);
+      }
+      results.textContent = answer;
+    }
+
+
   };
   console.log(newDiv.id);
 }
