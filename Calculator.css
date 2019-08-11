@@ -1,4 +1,8 @@
-#container {
+body {
+  background-color: lightBlue;
+}
+
+#container, #calculator {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -6,8 +10,43 @@
 }
 
 
+
+
 #calculator {
+  padding: 10px;
   height: 550px;
   width: 300px;
   border: 1px solid black;
+  border-radius: 35px;
+  justify-content: flex-start;
+
+}
+
+#screen {
+  height: 10%;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: 5%;
+}
+#buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  height: 90%;
+  width: 90%;
+  flex-grow:
+}
+
+.button {
+  height: 10%;
+  width: 20%;
+  border: 1px solid black;
+  margin: 1%;
+}
+
+#_0 {
+  flex-grow: 2
 }
