@@ -37,7 +37,7 @@ body {
   line-height: 130%;
 }
 #screen:empty:not(:focus):before{
-    content:attr(data-text)
+    content:attr(dataText)
 }
 #buttons {
   display: flex;
@@ -59,7 +59,7 @@ body {
   border-radius: 70px;
   font-size: 20px;
   box-shadow: 1px 2px black;
-  outline: none;
+  outline: none
 }
 
 
