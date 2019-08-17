@@ -77,6 +77,13 @@ let calculator = {
       results.textContent = '';
     }
   },
+  isDecimal: false,
+  decimal: function() {
+    if (calculator.isDecimal == false){
+      calculator.isDecimal = true;
+      results.textContent += ".";
+    }
+  },
   answered:false,
 
 }
@@ -85,7 +92,7 @@ let calculator = {
 let buttons = document.getElementsByClassName('button')
 for (let i=0; i <buttons.length; i++) {
   let button = buttons[i];
-  button.onclick = function(e){ //INPUT NUMBERS AND DECIMAL
+  button.onclick = function(e){ //INPUT NUMBERS
     if (button.textContent < 10){
         calculator.input(button);
     } else if (button.id == 'ac') { //CLEAR SCREEN
@@ -94,13 +101,16 @@ for (let i=0; i <buttons.length; i++) {
       console.log(history);
     } else if (button.id == 'plus' && calculator.operatorInEffect == false){ //ADD NUMBERS
       calculator.adding();
-    } else if (button.id == 'minus' && calculator.operatorInEffect == false){
+    } else if (button.id == 'minus' && calculator.operatorInEffect == false){ //SUBTRACKS NUMBERS
       calculator.subtracting()
-    } else if (button.id == 'multiply' && calculator.operatorInEffect == false) {
+    } else if (button.id == 'multiply' && calculator.operatorInEffect == false) { // MULTIPLIES NUMBERS
       calculator.multiplying();
     } else if (button.id == 'divide' && calculator.operatorInEffect == false){ //DIVIDE
       calculator.dividing();
-    } else if (button.id == 'equal') { //GETS ANSWER
+    } else if (button.id == 'decimal'){
+      calculator.decimal();
+    }
+    else if (button.id == 'equal') { //GETS ANSWER
       console.log(history);
       results.textContent = history[0];
   }
