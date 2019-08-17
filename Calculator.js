@@ -2,6 +2,7 @@ let answer = 0;
 let history = [];
 let results = document.querySelector('#screen');
 console.log(results.textContent)
+
 let calculator = {
   operatorInEffect: false,
   input: function(button){
@@ -84,6 +85,16 @@ let calculator = {
       results.textContent += ".";
     }
   },
+  percent: function(){
+    results.textContent = results.textContent / 100;
+  },
+  plusMinus: function(){
+    if (results.textContent[0] == '-'){
+      results.textContent = results.textContent.replace('-','');
+    } else {
+      results.textContent = '-' + results.textContent
+    }
+  },
   answered:false,
 
 }
@@ -109,8 +120,11 @@ for (let i=0; i <buttons.length; i++) {
       calculator.dividing();
     } else if (button.id == 'decimal'){
       calculator.decimal();
-    }
-    else if (button.id == 'equal') { //GETS ANSWER
+    } else if (button.id == 'percent'){
+      calculator.percent();
+    } else if (button.id == 'plusMinus'){
+      calculator.plusMinus();
+    }else if (button.id == 'equal') { //GETS ANSWER
       console.log(history);
       results.textContent = history[0];
   }
