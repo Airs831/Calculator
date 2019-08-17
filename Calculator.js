@@ -8,23 +8,23 @@ let calculator = {
     if (calculator.operatorInEffect == true){
       results.textContent = '';
       calculator.operatorInEffect = false;
-      results.textContent += parseInt(button.textContent);
+      results.textContent += Number(button.textContent);
     } else {
-      results.textContent += parseInt(button.textContent);
+      results.textContent += Number(button.textContent);
     }
   },
   add:false,
   adding: function() {
     calculator.operatorInEffect = true;
     if (calculator.add == true){
-      let answer = parseInt(results.textContent) + history[0];
+      let answer = Number(results.textContent) + history[0];
       history.pop();
       history.pop();
       history.push(answer);
       results.textContent = answer;
       console.log(history);
     } else {
-      history.push(parseInt(results.textContent));
+      history.push(Number(results.textContent));
       calculator.add = true;
       results.textContent = '';
     }
@@ -33,14 +33,14 @@ let calculator = {
   subtracting: function(){
     calculator.operatorInEffect = true;
     if (calculator.subtract == true){
-      let answer = history[0] - parseInt(results.textContent);
+      let answer = history[0] - Number(results.textContent);
       history.pop();
       history.pop();
       history.push(answer);
       results.textContent = answer;
       console.log(history);
     } else {
-      history.push(parseInt(results.textContent));
+      history.push(Number(results.textContent));
       calculator.subtract = true;
       results.textContent = '';
     }
@@ -49,14 +49,14 @@ let calculator = {
   multiplying:function(){
     calculator.operatorInEffect = true;
     if (calculator.multiply == true){
-      let answer = history[0] * parseInt(results.textContent);
+      let answer = history[0] * Number(results.textContent);
       history.pop();
       history.pop();
       history.push(answer);
       results.textContent = answer;
       console.log(history);
     } else {
-      history.push(parseInt(results.textContent));
+      history.push(Number(results.textContent));
       calculator.multiply = true;
       results.textContent = '';
     }
@@ -65,14 +65,14 @@ let calculator = {
   dividing: function(){
     calculator.operatorInEffect = true;
     if (calculator.divide == true){
-      let answer = history[0] / parseInt(results.textContent);
+      let answer = history[0] / Number(results.textContent);
       history.pop();
       history.pop();
       history.push(answer);
       results.textContent = answer;
       console.log(history);
     } else {
-      history.push(parseInt(results.textContent));
+      history.push(Number(results.textContent));
       calculator.divide = true;
       results.textContent = '';
     }
