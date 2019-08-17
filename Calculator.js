@@ -1,8 +1,15 @@
 let answer = 0;
 let history = [];
 let results = document.querySelector('#screen');
-console.log(results.textContent)
 
+console.log(results.textContent)
+const makeContentEditable = function() {
+  if (results.textContent !== "0") {
+    results.contentEditable = 'true';
+  } else {
+    results.contentEditable = 'false';
+  };
+}
 let calculator = {
   operatorInEffect: false,
   input: function(button){
@@ -96,7 +103,6 @@ let calculator = {
     }
   },
   answered:false,
-
 }
 
 
@@ -104,6 +110,7 @@ let buttons = document.getElementsByClassName('button')
 for (let i=0; i <buttons.length; i++) {
   let button = buttons[i];
   button.onclick = function(e){ //INPUT NUMBERS
+    makeContentEditable();
     if (button.textContent < 10){
         calculator.input(button);
     } else if (button.id == 'ac') { //CLEAR SCREEN

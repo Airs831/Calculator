@@ -10,8 +10,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-
 #calculator {
   margin-top: 40px;
   padding: 10px;
@@ -22,6 +20,7 @@ body {
   justify-content: flex-start;
   box-shadow: 4px 7px black;
 
+
 }
 
 #screen {
@@ -31,14 +30,20 @@ body {
   border-radius: 20px;
   margin-bottom: 5%;
   background-color: white;
+  outline: none;
   font-size: 60px;
   text-align: right;
   box-shadow: 2px 1px black;
   line-height: 130%;
+  text-overflow: clip;
+  overflow: scroll;
+  white-space: nowrap;
 }
+
 #screen:empty:not(:focus):before{
     content:attr(dataText)
 }
+
 #buttons {
   display: flex;
   flex-direction: row;
@@ -59,7 +64,7 @@ body {
   border-radius: 70px;
   font-size: 20px;
   box-shadow: 1px 2px black;
-  outline: none
+  outline: none;
 }
 
 
