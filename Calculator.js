@@ -4,8 +4,18 @@ let results = document.querySelector('#screen');
 console.log(results.textContent)
 let calculator = {
   operatorInEffect: false,
+  input: function(button){
+    if (calculator.operatorInEffect == true){
+      results.textContent = '';
+      calculator.operatorInEffect = false;
+      results.textContent += parseInt(button.textContent);
+    } else {
+      results.textContent += parseInt(button.textContent);
+    }
+  },
   add:false,
   adding: function() {
+    calculator.operatorInEffect = true;
     if (calculator.add == true){
       let answer = parseInt(results.textContent) + history[0];
       history.pop();
@@ -14,28 +24,61 @@ let calculator = {
       results.textContent = answer;
       console.log(history);
     } else {
-  history.push(parseInt(results.textContent));
-  calculator.add = true;
-  results.textContent = '';
-  }
-
+      history.push(parseInt(results.textContent));
+      calculator.add = true;
+      results.textContent = '';
+    }
   },
   subtract:false,
   subtracting: function(){
-
+    calculator.operatorInEffect = true;
+    if (calculator.subtract == true){
+      let answer = history[0] - parseInt(results.textContent);
+      history.pop();
+      history.pop();
+      history.push(answer);
+      results.textContent = answer;
+      console.log(history);
+    } else {
+      history.push(parseInt(results.textContent));
+      calculator.subtract = true;
+      results.textContent = '';
+    }
   },
   multiply:false,
   multiplying:function(){
-
+    calculator.operatorInEffect = true;
+    if (calculator.multiply == true){
+      let answer = history[0] * parseInt(results.textContent);
+      history.pop();
+      history.pop();
+      history.push(answer);
+      results.textContent = answer;
+      console.log(history);
+    } else {
+      history.push(parseInt(results.textContent));
+      calculator.multiply = true;
+      results.textContent = '';
+    }
   },
   divide:false,
   dividing: function(){
-
+    calculator.operatorInEffect = true;
+    if (calculator.divide == true){
+      let answer = history[0] / parseInt(results.textContent);
+      history.pop();
+      history.pop();
+      history.push(answer);
+      results.textContent = answer;
+      console.log(history);
+    } else {
+      history.push(parseInt(results.textContent));
+      calculator.divide = true;
+      results.textContent = '';
+    }
   },
   answered:false,
-  input: function(button) {
-    results.textContent += parseInt(button.textContent);
-  },
+
 }
 
 
@@ -43,25 +86,21 @@ let buttons = document.getElementsByClassName('button')
 for (let i=0; i <buttons.length; i++) {
   let button = buttons[i];
   button.onclick = function(e){ //INPUT NUMBERS AND DECIMAL
-      if (button.textContent < 10){
-        if (calculator.operatorInEffect == true){
-        results.textContent = '';
-        calculator.operatorInEffect = false;
+    if (button.textContent < 10){
         calculator.input(button);
-      } else {
-        calculator.input(button);
-      }
     } else if (button.id == 'ac') { //CLEAR SCREEN
       results.textContent = '';
       history.pop();
       console.log(history);
     } else if (button.id == 'plus' && calculator.operatorInEffect == false){ //ADD NUMBERS
-      calculator.operatorInEffect = true;
       calculator.adding();
+    } else if (button.id == 'minus' && calculator.operatorInEffect == false){
+      calculator.subtracting()
+    } else if (button.id == 'multiply' && calculator.operatorInEffect == false) {
+      calculator.multiplying();
     } else if (button.id == 'divide' && calculator.operatorInEffect == false){ //DIVIDE
-      calculator.operatorInEffect = true;
+      calculator.dividing();
     } else if (button.id == 'equal') { //GETS ANSWER
-
       console.log(history);
       results.textContent = history[0];
   }
