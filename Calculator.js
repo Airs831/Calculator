@@ -44,8 +44,13 @@ for (let i=0; i <buttons.length; i++) {
   let button = buttons[i];
   button.onclick = function(e){ //INPUT NUMBERS AND DECIMAL
       if (button.textContent < 10){
-      calculator.operatorInEffect = false;
-      calculator.input(button);
+        if (calculator.operatorInEffect == true){
+        results.textContent = '';
+        calculator.operatorInEffect = false;
+        calculator.input(button);
+      } else {
+        calculator.input(button);
+      }
     } else if (button.id == 'ac') { //CLEAR SCREEN
       results.textContent = '';
       history.pop();
@@ -55,8 +60,6 @@ for (let i=0; i <buttons.length; i++) {
       calculator.adding();
     } else if (button.id == 'divide' && calculator.operatorInEffect == false){ //DIVIDE
       calculator.operatorInEffect = true;
-
-
     } else if (button.id == 'equal') { //GETS ANSWER
 
       console.log(history);
