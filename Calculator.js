@@ -22,7 +22,7 @@ const addHistoryDiv = function(answer, operator){
   let historyDiv = document.createElement('div');
   historyDiv.onclick = function(e) {
     calculator.clearScreen()
-    results.textContent = historyDiv.textContent;
+    results.textContent = showAnswer.textContent;
   }
 
   let firstNumber = document.createElement('div');
