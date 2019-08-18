@@ -83,6 +83,10 @@ body {
   background-color: orange;
 }
 
+.highlight {
+  color: red;
+}
+
 #_0 {
   flex-grow: 2;
   border-radius: 25px;
