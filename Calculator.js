@@ -1,13 +1,61 @@
 let answer = 0;
 let history = [];
-let results = document.querySelector('#screen');
-
-const updateScreen = function(answer){
+const multiply =  document.querySelector('#multiply');
+const divide =  document.querySelector('#divide');
+const results = document.querySelector('#screen');
+const historyList = document.querySelector('#historyList');
+const historyTitle = document.querySelector('#historyTitle');
+const updateScreen = function(answer, operator){
   console.log(history);
-  history.shift();
   history.push(answer);
   results.textContent = answer;
   console.log(history);
+  addHistoryDiv(answer, operator);
+  history.shift();
+}
+
+const addHistoryDiv = function(answer, operator){
+  if (historyTitle.textContent == ''){
+    historyTitle.textContent = 'History';
+  } // Shows History List once its made
+
+  let historyDiv = document.createElement('div');
+  historyDiv.onclick = function(e) {
+    calculator.clearScreen()
+    results.textContent = historyDiv.textContent;
+  }
+
+  let firstNumber = document.createElement('div');
+  firstNumber.textContent = history[0];
+  historyDiv.appendChild(firstNumber);
+  let findOperator = document.createElement('div');
+  let secondNumber = document.createElement('div');
+  if (operator == 'add'){
+    findOperator.textContent = '+';
+    secondNumber.textContent = (results.textContent - history[0]);
+  } else if (operator == 'subtract'){
+    findOperator.textContent = '-';
+    secondNumber.textContent = (results.textContent + history[0]);
+  } else if (operator == 'multiply'){
+    findOperator.textContent = multiply.textContent;
+    secondNumber.textContent = (results.textContent / history[0])
+  } else if (operator == 'divide'){
+    secondNumber.textContent = (results.textContent * history[0])
+    findOperator.textContent = divide.textContent;
+  }
+
+  historyDiv.appendChild(secondNumber);
+  let equals = document.createElement('div');
+  equals.textContent = '='
+  let showAnswer = document.createElement('div');
+  showAnswer.textContent = answer;
+  historyDiv.classList.add('history')
+  historyDiv.appendChild(firstNumber);
+  historyDiv.appendChild(findOperator);
+  historyDiv.appendChild(secondNumber);
+  historyDiv.appendChild(equals);
+  historyDiv.appendChild(showAnswer);
+  historyList.appendChild(historyDiv);
 }
 
 const makeContentEditable = function() {
@@ -50,7 +98,6 @@ let calculator = {
       calculator.operatorInEffect = true;
     } else {
       if (calculator.add == true){
-        console.log('hi');
         calculator.adding();
         calculator.add = false;
       } else if (calculator.subtract == true){
@@ -70,22 +117,22 @@ let calculator = {
   adding: function() {
     console.log('hi');
     let answer = Number(results.textContent) + history[0];
-    updateScreen(answer);
+    updateScreen(answer, 'add');
   },
   subtract:false,
   subtracting: function(){
     let answer = history[0] - Number(results.textContent);
-    updateScreen(answer);
+    updateScreen(answer, 'subtract');
   },
   multiply:false,
   multiplying:function(){
     let answer = history[0] * Number(results.textContent);
-    updateScreen(answer);
+    updateScreen(answer, 'multiply');
   },
   divide:false,
   dividing: function(){
     let answer = history[0] / Number(results.textContent);
-    updateScreen(answer);
+    updateScreen(answer, 'divide');
   },
   isDecimal: false,
   decimal: function() {

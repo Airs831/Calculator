@@ -6,20 +6,20 @@
     <title>Calculator</title>
   </head>
   <body>
-    <div id="container">
+    <div id="container" class="columnFlex">
       <div id="title"> Calculator </div>
       <div id="name"> By: Erin Limbo</div>
-      <div id="calculator">
+      <div id="calculator" class="columnFlex">
         <div id="screen" dataText = "0"></div>
         <div id="buttons">
           <button type="button" class= "button light " id="ac">AC</button>
           <button type="button" class= "button light" id="plusMinus">+/-</button>
-          <button type="button" class= "button light" id="percent">&#x25</button>
-          <button type="button" class= "button special" id="divide">&#xf7</button>
+          <button type="button" class= "button light" id="percent">&#x25;</button>
+          <button type="button" class= "button special" id="divide">&#xf7;</button>
           <button type="button" class= "button" id="_7">7</button>
           <button type="button" class= "button" id="_8">8</button>
           <button type="button" class= "button" id="_9">9</button>
-          <button type="button" class= "button special" id="multiply">&#215</button>
+          <button type="button" class= "button special" id="multiply">&#215;</button>
           <button type="button" class= "button" id="_4">4</button>
           <button type="button" class= "button" id="_5">5</button>
           <button type="button" class= "button" id="_6">6</button>
@@ -33,6 +33,11 @@
           <button type="button" class= "button special" id="equal">=</button>
         </div>
       </div>
+
+    </div>
+    <div id="showHistory" class="columnFlex">
+      <div id="historyTitle"></div>
+      <div id= "historyList"></div>
     </div>
     <script src="Calculator.js" charset="utf-8"></script>
   </body>
