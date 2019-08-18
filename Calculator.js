@@ -21,6 +21,17 @@ const makeContentEditable = function() {
 let calculator = {
   refreshScreen: false, // Resets Screen when operator is pressed. Wont allow operators to successively press
   operatorInEffect: false, // Checks which operator has to update the screen
+  clearScreen: function(){ //Reset Calculator
+    results.textContent = '';
+    history.pop();
+    calculator.add = false;
+    calculator.subtract = false;
+    calculator.multiply = false;
+    calculator.divide = false;
+    calculator.refreshScreen = false;
+    calculator.operatorInEffect = false;
+    console.log(history);
+  },
   input: function(button){ // Inputs numbers
     if (calculator.refreshScreen == true){
       results.textContent = '';
@@ -105,9 +116,7 @@ for (let i=0; i <buttons.length; i++) {
     if (button.textContent < 10){
         calculator.input(button);
     } else if (button.id == 'ac') { //CLEAR SCREEN
-      results.textContent = '';
-      history.pop();
-      console.log(history);
+      calculator.clearScreen();
     } else if (button.id == 'plus' && calculator.refreshScreen == false){ //ADD NUMBERS
       calculator.performOperator('add');
     } else if (button.id == 'minus' && calculator.refreshScreen == false){ //SUBTRACKS NUMBERS
